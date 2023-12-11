@@ -1,0 +1,17 @@
+# -------------------------------------------------------------------
+# Build Showroom Terminal Image for ARO Environments
+# -------------------------------------------------------------------
+FROM --platform=linux/amd64 quay.io/rhpds/openshift-showroom-terminal-ocp:latest
+
+ARG BUILD_DATE="2023-12-11"
+
+LABEL maintainer="Wolfgang Kulhanek - WolfgangKulhanek@gmail.com" \
+      build-date=$BUILD_DATE
+
+USER root
+
+# Install Azure CLI
+RUN dnf -y install https://packages.microsoft.com/config/rhel/9/packages-microsoft-prod.rpm
+RUN dnf -y install azure-cli
+
+USER lab-user

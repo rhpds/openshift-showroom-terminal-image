@@ -1,0 +1,47 @@
+# -----------------------------------------------
+# Build Showroom Terminal Base Image
+# -----------------------------------------------
+FROM --platform=linux/amd64 registry.access.redhat.com/ubi9:latest
+
+ARG TTYD_VERSION="1.7.4"
+ARG TINI_VERSION="0.19.0"
+ARG BUILD_DATE="2023-12-11"
+
+LABEL maintainer="Wolfgang Kulhanek - WolfgangKulhanek@gmail.com" \
+      build-date=$BUILD_DATE
+
+USER root
+
+# Install base software
+RUN dnf -y update && dnf -y upgrade && \
+    dnf -y install wget vim unzip git && \
+    dnf -y install https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini_${TINI_VERSION}-amd64.rpm && \
+    dnf clean all && \
+    rm -rf /var/cache/yum /root/.cache && \
+    wget -q -O /usr/bin/ttyd https://github.com/tsl0922/ttyd/releases/download/${TTYD_VERSION}/ttyd.i686
+
+# Create a user to be used in the terminal
+RUN adduser lab-user --home-dir=/home/lab-user && \
+    mkdir /var/lab-user && \
+    chown lab-user:root /var/lab-user
+
+COPY assets/bashrc.base /var/lab-user/bashrc.base
+COPY assets/runttyd /usr/bin/runttyd
+
+# Set image up to be run as random user on OpenShift
+RUN chown lab-user:root /var/lab-user/bashrc.base && \
+    chown root:root /usr/bin/ttyd /usr/bin/runttyd && \
+    chmod u=rwx,g=rwx,o=rx /usr/bin/ttyd /usr/bin/runttyd && \
+    chown -R lab-user:root /home/lab-user && \
+    chmod 770 /home/lab-user && \
+    chgrp 0 /home/lab-user && \
+    chmod -R g=u /home/lab-user /etc/passwd
+
+USER lab-user
+WORKDIR /home/lab-user
+VOLUME /home/lab-user
+
+EXPOSE 7681
+
+ENTRYPOINT ["/usr/bin/tini", "--"]
+CMD ["/usr/bin/runttyd"]

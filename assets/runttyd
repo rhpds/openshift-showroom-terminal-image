@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Set a few environment variables
+export USER=lab-user
+export HOME=/home/lab-user
+
+# Updated /etc/passwd with current UID of the running container
+grep -v ^lab-user /etc/passwd > "/tmp/passwd"
+echo "lab-user:x:$(id -u):0:lab-user user:/data:/sbin/nologin" >> /tmp/passwd
+cat /tmp/passwd >/etc/passwd
+rm /tmp/passwd
+
+if [ ! -f /home/lab-user/.setupcomplete ]; then
+  cp /var/lab-user/bashrc.base /home/lab-user/.bashrc
+  touch /home/lab-user/.setupcomplete
+fi
+
+# Start TTYD
+exec /usr/bin/ttyd -W /usr/bin/bash
