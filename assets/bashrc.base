@@ -31,3 +31,8 @@ alias la="ls -aF"
 alias ll="ls -lF"
 
 export PS1="[\u: \w]$ "
+
+# Print MotD
+if [ -f /etc/motd.d/rhdp ]; then
+        cat /etc/motd.d/rhdp
+fi

@@ -16,4 +16,4 @@ if [ ! -f /home/lab-user/.setupcomplete ]; then
 fi
 
 # Start TTYD
-exec /usr/bin/ttyd -W /usr/bin/bash
+exec /usr/bin/ttyd -t 'theme={"background": "black"}' -W /usr/bin/bash
