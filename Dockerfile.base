@@ -14,7 +14,7 @@ USER root
 
 # Install base software
 RUN dnf -y update && dnf -y upgrade && \
-    dnf -y install wget vim unzip git watch && \
+    dnf -y install wget vim unzip git procps && \
     dnf -y install https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini_${TINI_VERSION}-amd64.rpm && \
     dnf clean all && \
     rm -rf /var/cache/yum /root/.cache && \
@@ -27,11 +27,13 @@ RUN adduser lab-user --home-dir=/home/lab-user && \
 
 COPY assets/bashrc.base /var/lab-user/bashrc.base
 COPY assets/runttyd /usr/bin/runttyd
+COPY assets/motd /etc/motd.d/rhdp
 
 # Set image up to be run as random user on OpenShift
 RUN chown lab-user:root /var/lab-user/bashrc.base && \
-    chown root:root /usr/bin/ttyd /usr/bin/runttyd && \
+    chown root:root /usr/bin/ttyd /usr/bin/runttyd /etc/motd.d/rhdp && \
     chmod u=rwx,g=rwx,o=rx /usr/bin/ttyd /usr/bin/runttyd && \
+    chmod u=rx,g=rx,o=r /etc/motd.d/rhdp && \
     chown -R lab-user:root /home/lab-user && \
     chmod 770 /home/lab-user && \
     chgrp 0 /home/lab-user && \
