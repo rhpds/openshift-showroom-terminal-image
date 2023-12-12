@@ -13,7 +13,7 @@ USER root
 
 # Install ROSA
 RUN wget -q -O /tmp/rosa.tar.gz https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/rosa/latest/rosa-linux.tar.gz && \
-    tar -C /usr/local/bin --strip-components=1 -xzvf /tmp/rosa.tar.gz && \
+    tar -C /usr/local/bin -xzf /tmp/rosa.tar.gz && \
     rm /tmp/rosa.tar.gz
 
 # Install AWS CLI
