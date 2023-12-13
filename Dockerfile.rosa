@@ -22,4 +22,11 @@ RUN wget -q -O /tmp/aws.zip https://awscli.amazonaws.com/awscli-exe-linux-x86_64
     /tmp/aws/install -i /usr/local/aws -b /usr/local/bin && \
     rm -rf /tmp/aws.zip /tmp/aws
 
+# Change all permissions
+RUN chown root:root /usr/local/bin/* && \
+    chmod u=rwx,g=rwx,o=rx /usr/local/bin/*
+
+# Set up Bash Completion for all tools
+RUN /usr/local/bin/rosa completion bash >/etc/bash_completion.d/rosa
+
 USER lab-user

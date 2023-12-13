@@ -1,0 +1,36 @@
+= OpenShift Showroom Terminal Images
+
+== Overview
+
+This repository holds the source code for the OpenShift Showroom terminal images.
+
+These images are intended to be used with the AgnosticD Workload `ocp4_workload_showroom` and can be used to provide a terminal running in a pod rather than having to ssh to a bastion VM.
+
+They are supposed to be complete - but PRs are accepted for missing tools. Although please consider if your PR will add a tool that *every* user of that image would want. If not please create a new image (based on an existing image) and use that one.
+
+The images are structured like this:
+
+* Base Image
+** OpenShift Image
+*** ROSA Image
+*** ARO Image
+
+New images can be added via Pull Request.
+
+== Building
+
+All you need to have installed on your workstation is `git` and `podman`.
+
+In order to build (you need to have *push* permissions for the repository on Quay.io) follow these steps:
+
+[source,sh]
+----
+podman login quay.io
+
+git clone https://github.com/openshift-showroom-terminal
+cd openshift-showroom-terminal
+
+./build.sh
+----
+
+Images are tagged with `latest` and the current date (e.g. `2023-12-13`) when a build finishes.

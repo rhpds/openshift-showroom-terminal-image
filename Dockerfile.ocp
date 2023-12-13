@@ -66,4 +66,13 @@ RUN wget -q -O /usr/local/bin/roxctl https://mirror.openshift.com/pub/rhacs/asse
 RUN chown root:root /usr/local/bin/* && \
     chmod u=rwx,g=rwx,o=rx /usr/local/bin/*
 
+# Set up Bash Completion for all tools
+RUN /usr/local/bin/oc completion bash >/etc/bash_completion.d/openshift && \
+    /usr/local/bin/helm completion bash > /etc/bash_completion.d/helm && \
+    /usr/local/bin/odo completion bash > /etc/bash_completion.d/odo && \
+    /usr/local/bin/tkn completion bash >/etc/bash_completion.d/tkn && \
+    /usr/local/bin/kn completion bash >/etc/bash_completion.d/kn && \
+    /usr/local/bin/virtctl completion bash >/etc/bash_completion.d/virtctl && \
+    /usr/local/bin/roxctl completion bash >/etc/bash_completion.d/roxctl
+
 USER lab-user

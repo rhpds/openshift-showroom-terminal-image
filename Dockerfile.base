@@ -14,7 +14,7 @@ USER root
 
 # Install base software
 RUN dnf -y update && dnf -y upgrade && \
-    dnf -y install wget vim unzip git procps && \
+    dnf -y install wget vim unzip git procps bash-completion && \
     dnf -y install https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini_${TINI_VERSION}-amd64.rpm && \
     dnf clean all && \
     rm -rf /var/cache/yum /root/.cache && \
