@@ -50,7 +50,7 @@ RUN wget -q -O /usr/local/bin/odo https://mirror.openshift.com/pub/openshift-v4/
 
 # tkn
 RUN wget -q -O /tmp/tkn.tar.gz https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/pipelines/${TKN_VERSION}/tkn-linux-amd64.tar.gz && \
-    tar -C /usr/local/bin -zxvf /tmp/tkn.tar.gz && \
+    tar -C /usr/local/bin -zxvf /tmp/tkn.tar.gz --no-same-owner && \
     rm /tmp/tkn.tar.gz /usr/local/bin/LICENSE
 
 # KN - The Serverless CLI
