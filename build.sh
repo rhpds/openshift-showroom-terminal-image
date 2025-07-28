@@ -2,7 +2,7 @@
 # -----------------------------------------------
 # Build Showroom Terminal Base Image
 # -----------------------------------------------
-TTYD_VERSION="1.7.4"
+TTYD_VERSION="1.7.7"
 TINI_VERSION="0.19.0"
 BUILD_DATE=$(date +"%Y-%m-%d")
 IMAGE_NAME=quay.io/rhpds/openshift-showroom-terminal-baseimage
@@ -28,15 +28,15 @@ podman push ${IMAGE_NAME}:${BUILD_DATE}
 # -------------------------------------------------------------------
 # Build Showroom Terminal Image for OpenShift Environments
 # -------------------------------------------------------------------
-OCP_VERSION="4.14"
+OCP_VERSION="4.19"
 HELM_VERSION="latest"
-ODO_VERSION="v3.15.0"
+ODO_VERSION="v3.16.1"
 TKN_VERSION="latest"
 KN_VERSION="latest"
-VIRTCTL_VERSION="v1.1.0"
+VIRTCTL_VERSION="v1.5.2"
 ROXCTL_VERSION="latest"
 JAVA_VERSION=17
-MAVEN_VERSION="3.9.6"
+MAVEN_VERSION="3.9.11"
 
 BUILD_DATE=$(date +"%Y-%m-%d")
 IMAGE_NAME=quay.io/rhpds/openshift-showroom-terminal-ocp
