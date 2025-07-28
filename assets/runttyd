@@ -15,5 +15,13 @@ if [ ! -f /home/lab-user/.setupcomplete ]; then
   touch /home/lab-user/.setupcomplete
 fi
 
+TTYD_COMMAND="/usr/bin/bash"
+
+# RUNCOMMAND variable can be used to run a command automatically inside 
+# the container instead using bash
+if [[ -n "$RUNCOMMAND" ]]; then
+    TTYD_COMMAND="/usr/bin/bash -c \"$RUNCOMMAND\""
+fi
+
 # Start TTYD
-exec /usr/bin/ttyd -t 'theme={"background": "black"}' -W /usr/bin/bash
+exec /usr/bin/ttyd -t 'theme={"background": "black"}' -W $TTYD_COMMAND
