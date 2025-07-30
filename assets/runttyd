@@ -16,12 +16,18 @@ if [ ! -f /home/lab-user/.setupcomplete ]; then
 fi
 
 TTYD_COMMAND="/usr/bin/bash"
+TTYD_PORT=7681
 
 # RUNCOMMAND variable can be used to run a command automatically inside 
 # the container instead using bash
 if [[ -n "$RUNCOMMAND" ]]; then
-    TTYD_COMMAND="/usr/bin/bash -c \"$RUNCOMMAND\""
+    TTYD_COMMAND="$RUNCOMMAND"
+fi
+
+# PORT variable can be used to specify a different port than 7681
+if [[ -n "$PORT" ]]; then
+    TTYD_PORT=$PORT
 fi
 
 # Start TTYD
-exec /usr/bin/ttyd -t 'theme={"background": "black"}' -W $TTYD_COMMAND
+exec /usr/bin/ttyd -p $TTYD_PORT -t 'theme={"background": "black"}' -W $TTYD_COMMAND
