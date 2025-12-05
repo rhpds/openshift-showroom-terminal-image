@@ -28,12 +28,12 @@ podman push ${IMAGE_NAME}:${BUILD_DATE}
 # -------------------------------------------------------------------
 # Build Showroom Terminal Image for OpenShift Environments
 # -------------------------------------------------------------------
-OCP_VERSION="4.19"
+OCP_VERSION="4.20"
 HELM_VERSION="latest"
 ODO_VERSION="v3.16.1"
 TKN_VERSION="latest"
 KN_VERSION="latest"
-VIRTCTL_VERSION="v1.5.2"
+VIRTCTL_VERSION="v1.7.0"
 ROXCTL_VERSION="latest"
 JAVA_VERSION=17
 MAVEN_VERSION="3.9.11"
