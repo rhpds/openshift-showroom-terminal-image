@@ -5,6 +5,7 @@ FROM --platform=linux/amd64 registry.access.redhat.com/ubi9:latest
 
 ARG TTYD_VERSION="1.7.7"
 ARG TINI_VERSION="0.19.0"
+ARG PYTHON_VERSION="3.12"
 ARG BUILD_DATE="2023-12-11"
 
 LABEL maintainer="Wolfgang Kulhanek - WolfgangKulhanek@gmail.com" \
@@ -16,6 +17,10 @@ USER root
 RUN dnf -y update && dnf -y upgrade && \
     dnf -y install wget vim unzip git procps bash-completion httpd-tools jq && \
     dnf -y install https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini_${TINI_VERSION}-amd64.rpm && \
+    dnf -y install python${PYTHON_VERSION} python${PYTHON_VERSION}-pip && \
+    rm -f /usr/bin/python3 && \
+    ln -s /usr/bin/python${PYTHON_VERSION} /usr/bin/python && \
+    ln -s /usr/bin/pip${PYTHON_VERSION} /usr/bin/pip && \
     dnf clean all && \
     rm -rf /var/cache/yum /root/.cache && \
     wget -q -O /usr/bin/ttyd https://github.com/tsl0922/ttyd/releases/download/${TTYD_VERSION}/ttyd.i686

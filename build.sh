@@ -4,12 +4,14 @@
 # -----------------------------------------------
 TTYD_VERSION="1.7.7"
 TINI_VERSION="0.19.0"
+PYTHON_VERSION="3.12"
 BUILD_DATE=$(date +"%Y-%m-%d")
 IMAGE_NAME=quay.io/rhpds/openshift-showroom-terminal-baseimage
 
 podman build . --file Containerfile.base \
   --build-arg TTYD_VERSION=${TTYD_VERSION} \
   --build-arg TINI_VERSION=${TINI_VERSION} \
+  --build-arg PYTHON_VERSION=${PYTHON_VERSION} \
   --build-arg BUILD_DATE=${BUILD_DATE} \
   --tag ${IMAGE_NAME}:latest
 
@@ -37,6 +39,7 @@ VIRTCTL_VERSION="v1.7.0"
 ROXCTL_VERSION="latest"
 JAVA_VERSION=17
 MAVEN_VERSION="3.9.11"
+LLAMASTACK_VERSION="0.3.3"
 
 BUILD_DATE=$(date +"%Y-%m-%d")
 IMAGE_NAME=quay.io/rhpds/openshift-showroom-terminal-ocp
@@ -52,6 +55,7 @@ podman build . --file Containerfile.ocp \
   --build-arg KN_VERSION=${KN_VERSION} \
   --build-arg VIRTCTL_VERSION=${VIRTCTL_VERSION} \
   --build-arg ROXCTL_VERSION=${ROXCTL_VERSION} \
+  --build-arg LLAMASTACK_VERSION=${LLAMASTACK_VERSION} \
   --tag ${IMAGE_NAME}:latest
 
 if [ $? -ne 0 ]; then

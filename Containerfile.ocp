@@ -17,6 +17,8 @@ ARG KN_VERSION="latest"
 ARG VIRTCTL_VERSION="v1.1.0"
 # https://mirror.openshift.com/pub/rhacs/assets/latest/bin/linux/roxctl
 ARG ROXCTL_VERSION="latest"
+# https://pypi.org/project/llama-stack-client
+ARG LLAMASTACK_VERSION="0.3.3"
 
 # Java/Quarkus Build environment
 ARG MAVEN_VERSION="3.9.6"
@@ -61,6 +63,9 @@ RUN wget -q -O /usr/local/bin/virtctl https://github.com/kubevirt/kubevirt/relea
 
 # roxctl
 RUN wget -q -O /usr/local/bin/roxctl https://mirror.openshift.com/pub/rhacs/assets/${ROXCTL_VERSION}/bin/linux/roxctl
+
+# llama-stack-client
+RUN pip install llama-stack-client==${LLAMASTACK_VERSION}
 
 # Change all permissions
 RUN chown root:root /usr/local/bin/* && \
