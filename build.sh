@@ -90,6 +90,8 @@ podman tag ${IMAGE_NAME}:latest ${IMAGE_NAME}:${BUILD_DATE}
 podman push ${IMAGE_NAME}:latest
 podman push ${IMAGE_NAME}:${BUILD_DATE}
 
+# Don't build for ARO - don't have RHEL 10 compability apparently
+exit
 # -------------------------------------------------------------------
 # Build Showroom Terminal Image for ARO Environments
 # -------------------------------------------------------------------
