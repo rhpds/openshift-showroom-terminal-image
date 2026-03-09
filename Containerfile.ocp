@@ -20,7 +20,7 @@ ARG ROXCTL_VERSION="latest"
 
 # Java/Quarkus Build environment
 ARG MAVEN_VERSION="3.9.13"
-ARG JAVA_VERSION="17"
+ARG JAVA_VERSION="21"
 ARG BUILD_DATE="2023-12-11"
 
 LABEL maintainer="Wolfgang Kulhanek - WolfgangKulhanek@gmail.com" \
