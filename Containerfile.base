@@ -1,7 +1,7 @@
 # -----------------------------------------------
 # Build Showroom Terminal Base Image
 # -----------------------------------------------
-FROM --platform=linux/amd64 registry.access.redhat.com/ubi9:latest
+FROM --platform=linux/amd64 registry.access.redhat.com/ubi10:latest
 
 ARG TTYD_VERSION="1.7.7"
 ARG TINI_VERSION="0.19.0"

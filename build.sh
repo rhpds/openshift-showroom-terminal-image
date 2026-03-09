@@ -28,15 +28,15 @@ podman push ${IMAGE_NAME}:${BUILD_DATE}
 # -------------------------------------------------------------------
 # Build Showroom Terminal Image for OpenShift Environments
 # -------------------------------------------------------------------
-OCP_VERSION="4.20"
+OCP_VERSION="4.21"
 HELM_VERSION="latest"
-ODO_VERSION="v3.16.1"
+ODO_VERSION="latest"
 TKN_VERSION="latest"
 KN_VERSION="latest"
-VIRTCTL_VERSION="v1.7.0"
+VIRTCTL_VERSION="v1.7.1"
 ROXCTL_VERSION="latest"
 JAVA_VERSION=17
-MAVEN_VERSION="3.9.11"
+MAVEN_VERSION="3.9.13"
 
 BUILD_DATE=$(date +"%Y-%m-%d")
 IMAGE_NAME=quay.io/rhpds/openshift-showroom-terminal-ocp

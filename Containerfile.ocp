@@ -4,22 +4,22 @@
 FROM --platform=linux/amd64 quay.io/rhpds/openshift-showroom-terminal-baseimage:latest
 
 # https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/latest-4.14/openshift-client-linux.tar.gz
-ARG OCP_VERSION="4.14"
+ARG OCP_VERSION="4.21"
 # https://mirror.openshift.com/pub/openshift-v4/clients/helm/latest/helm-linux-amd64
 ARG HELM_VERSION="latest"
 # https://mirror.openshift.com/pub/openshift-v4/clients/odo/v3.15.0/odo-linux-amd64
-ARG ODO_VERSION="v3.15.0"
+ARG ODO_VERSION="latest"
 # https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/pipelines/latest/tkn-linux-amd64.tar.gz
 ARG TKN_VERSION="latest"
 # https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/serverless/latest/kn-linux-amd64
 ARG KN_VERSION="latest"
 # https://github.com/kubevirt/kubevirt/releases/download/v1.1.0/virtctl-v1.1.0-linux-amd64
-ARG VIRTCTL_VERSION="v1.1.0"
+ARG VIRTCTL_VERSION="v1.7.1"
 # https://mirror.openshift.com/pub/rhacs/assets/latest/bin/linux/roxctl
 ARG ROXCTL_VERSION="latest"
 
 # Java/Quarkus Build environment
-ARG MAVEN_VERSION="3.9.6"
+ARG MAVEN_VERSION="3.9.13"
 ARG JAVA_VERSION="17"
 ARG BUILD_DATE="2023-12-11"
 
