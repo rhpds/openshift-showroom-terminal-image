@@ -67,6 +67,7 @@ RUN wget -q -O /usr/local/bin/roxctl https://mirror.openshift.com/pub/rhacs/asse
 # shp (OpenShift Builds)
 RUN wget -q -O /tmp/shp.tar.gz https://developers.redhat.com/content-gateway/file/pub/openshift-v4/clients/openshift-builds/${SHP_VERSION}/shp-linux-amd64.tar.gz && \
     tar -C /usr/local/bin -zxvf /tmp/shp.tar.gz --no-same-owner && \
+    rm /tmp/shp.tar.gz && \
     mv /usr/local/bin/shp-linux-amd64 /usr/local/bin/shp
 
 # Change all permissions
