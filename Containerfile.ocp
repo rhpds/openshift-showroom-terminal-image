@@ -81,6 +81,7 @@ RUN /usr/local/bin/oc completion bash >/etc/bash_completion.d/openshift && \
     /usr/local/bin/tkn completion bash >/etc/bash_completion.d/tkn && \
     /usr/local/bin/kn completion bash >/etc/bash_completion.d/kn && \
     /usr/local/bin/virtctl completion bash >/etc/bash_completion.d/virtctl && \
-    /usr/local/bin/roxctl completion bash >/etc/bash_completion.d/roxctl
+    /usr/local/bin/roxctl completion bash >/etc/bash_completion.d/roxctl && \
+    /usr/local/bin/shp completion bash >/etc/bash_completion.d/shp
 
 USER lab-user
