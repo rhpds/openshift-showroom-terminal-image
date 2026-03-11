@@ -28,15 +28,16 @@ podman push ${IMAGE_NAME}:${BUILD_DATE}
 # -------------------------------------------------------------------
 # Build Showroom Terminal Image for OpenShift Environments
 # -------------------------------------------------------------------
-OCP_VERSION="4.20"
+OCP_VERSION="4.21"
 HELM_VERSION="latest"
-ODO_VERSION="v3.16.1"
+ODO_VERSION="latest"
 TKN_VERSION="latest"
 KN_VERSION="latest"
-VIRTCTL_VERSION="v1.7.0"
+VIRTCTL_VERSION="v1.7.1"
 ROXCTL_VERSION="latest"
-JAVA_VERSION=17
-MAVEN_VERSION="3.9.11"
+SHP_VERSION="1.3.0-258"
+JAVA_VERSION=21
+MAVEN_VERSION="3.9.13"
 
 BUILD_DATE=$(date +"%Y-%m-%d")
 IMAGE_NAME=quay.io/rhpds/openshift-showroom-terminal-ocp
@@ -90,6 +91,8 @@ podman tag ${IMAGE_NAME}:latest ${IMAGE_NAME}:${BUILD_DATE}
 podman push ${IMAGE_NAME}:latest
 podman push ${IMAGE_NAME}:${BUILD_DATE}
 
+# Don't build for ARO - don't have RHEL 10 compability apparently
+exit
 # -------------------------------------------------------------------
 # Build Showroom Terminal Image for ARO Environments
 # -------------------------------------------------------------------

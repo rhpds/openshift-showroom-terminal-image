@@ -1,7 +1,7 @@
 # -----------------------------------------------
 # Build Showroom Terminal Base Image
 # -----------------------------------------------
-FROM --platform=linux/amd64 registry.access.redhat.com/ubi9:latest
+FROM --platform=linux/amd64 registry.access.redhat.com/ubi10:latest
 
 ARG TTYD_VERSION="1.7.7"
 ARG TINI_VERSION="0.19.0"
@@ -14,7 +14,7 @@ USER root
 
 # Install base software
 RUN dnf -y update && dnf -y upgrade && \
-    dnf -y install wget vim unzip git procps bash-completion httpd-tools jq && \
+    dnf -y install wget vim unzip git procps bash-completion httpd-tools jq tmux && \
     dnf -y install https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini_${TINI_VERSION}-amd64.rpm && \
     dnf clean all && \
     rm -rf /var/cache/yum /root/.cache && \
