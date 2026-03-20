@@ -37,7 +37,7 @@ VIRTCTL_VERSION="v1.7.1"
 ROXCTL_VERSION="latest"
 SHP_VERSION="1.3.0-258"
 JAVA_VERSION=21
-MAVEN_VERSION="3.9.13"
+MAVEN_VERSION="3.9.14"
 
 BUILD_DATE=$(date +"%Y-%m-%d")
 IMAGE_NAME=quay.io/rhpds/openshift-showroom-terminal-ocp
