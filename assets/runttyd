@@ -30,4 +30,4 @@ if [[ -n "$PORT" ]]; then
 fi
 
 # Start TTYD
-exec /usr/bin/ttyd -p $TTYD_PORT -t 'theme={"background": "black"}' -W $TTYD_COMMAND
+exec /usr/bin/ttyd -p $TTYD_PORT -P 5 -t 'theme={"background": "black"}' -W $TTYD_COMMAND
