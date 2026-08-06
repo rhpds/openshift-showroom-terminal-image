@@ -1,3 +1,8 @@
+[IMPORTANT]
+====
+This repository has been archived. Development has moved to https://github.com/rhpds/showroom-images/tree/main/ocp-terminal[showroom-images/ocp-terminal].
+====
+
 = OpenShift Showroom Terminal Images
 
 == Overview
